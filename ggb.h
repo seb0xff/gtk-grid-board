@@ -48,6 +48,9 @@ void ggb_grid_clear_all(GgbGrid *self);
 
 void ggb_grid_redraw(GgbGrid *self);
 
+void ggb_grid_position_to_index(GgbGrid *self, double x, double y, int *x_idx,
+                                int *y_idx);
+
 #ifdef __cplusplus
 } // extern "C"
 #endif

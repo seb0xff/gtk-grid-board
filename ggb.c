@@ -457,10 +457,21 @@ void ggb_grid_clear_all(GgbGrid *self) {
   ggb_grid_redraw(self);
 }
 
-void ggb_grid_redraw(GgbGrid *self) {
-  // GgbGridPrivate *priv = ggb_grid_get_instance_private(self);
-  // gtk_widget_queue_draw(priv->cells_area);
-  // gtk_widget_queue_draw(priv->overlay);
-  // gtk_widget_queue_draw(priv->guidelines_area);
-  gtk_widget_queue_draw(GTK_WIDGET(self));
+void ggb_grid_redraw(GgbGrid *self) { gtk_widget_queue_draw(GTK_WIDGET(self)); }
+
+/**
+ * ggb_grid_position_to_index
+ * @self: a `GgbGrid`
+ * @x: the x coordinate
+ * @y: the y coordinate
+ * @x_idx: (out): the x coordinate
+ * @y_idx: (out): the y coordinate
+ *
+ * Converts a position in the grid to the corresponding index.
+ */
+void ggb_grid_position_to_index(GgbGrid *self, double x, double y, int *x_idx,
+                                int *y_idx) {
+  GgbGridPrivate *priv = ggb_grid_get_instance_private(self);
+  *x_idx = x / priv->cell_width;
+  *y_idx = y / priv->cell_height;
 }
