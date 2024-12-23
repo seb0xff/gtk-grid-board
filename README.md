@@ -1,7 +1,7 @@
 # gtk-grid-board
 
 Simple grid board widget for gtk4.
-Some thigns that can be customized:
+Some things that can be customized:
 
 - number of rows and columns (of course)
 - cell radius
