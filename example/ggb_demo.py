@@ -1,7 +1,7 @@
 import gi
+from os import path as p
 
 ## Uncomment the following lines if you don't want to install the library
-# from os import path as p
 # TYPELIB_DIR_ABS = p.abspath(
 #     p.realpath(p.join(p.dirname(__file__), '..', 'build')))
 
@@ -45,9 +45,16 @@ class MainWindow(Gtk.ApplicationWindow):
     Gtk.StyleContext.add_provider_for_display(
         display, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
 
-    grid = Ggb.Grid(cols_num=10, rows_num=10, cell_radius=10)
-    grid.set_at(4, 4, True, False)
-    self.set_child(grid)
+    with open(p.join(p.dirname(__file__), 'data.txt'), 'r') as f:
+      xn, yn = map(int, next(f).split())
+      grid = Ggb.Grid(cols_num=xn, rows_num=yn)
+      grid.set_cell_spacing(3)
+      grid.set_cell_radius(1.5)
+      self.set_child(grid)
+      for line in f:
+        x, y = map(int, line.split())
+        grid.set_at(x, y, True, False)
+      grid.redraw()
 
 
 class MyApp(Adw.Application):
