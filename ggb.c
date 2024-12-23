@@ -201,7 +201,7 @@ GgbGrid *ggb_grid_new(void) {
   return self;
 }
 
-GgbGrid *ggb_grid_new_with_size(int rows_num, int cols_num) {
+GgbGrid *ggb_grid_new_with_size(int cols_num, int rows_num) {
   GgbGrid *self = g_object_new(ggb_grid_get_type(), NULL);
   ggb_grid_set_size(self, rows_num, cols_num);
   return self;
