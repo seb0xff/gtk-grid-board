@@ -8,9 +8,7 @@ extern "C" {
 #define GGB_TYPE_SQUARE (ggb_grid_get_type())
 #define GGB_GRID(obj)                                                          \
   (G_TYPE_CHECK_INSTANCE_CAST((obj), GGB_TYPE_SQUARE, GgbGrid))
-// G_DECLARE_FINAL_TYPE(GgbGrid, ggb_grid, GGB, SQUARE, GObject)
 G_DECLARE_DERIVABLE_TYPE(GgbGrid, ggb_grid, GB, SQUARE, GtkWidget)
-// GObject)
 
 struct _GgbGridClass {
   GtkWidgetClass parent_class;
